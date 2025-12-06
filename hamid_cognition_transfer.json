@@ -1,0 +1,113 @@
+{
+  "metadata": {
+    "system": "HAMID_ALPHA_Cognitive_Engine_v2",
+    "creator": "حمید حیاتی جوزانی",
+    "created": "2025-12-06T07:33:25.586831",
+    "transfer_purpose": "بازتولید شناخت دقیق از P-S-T dynamics"
+  },
+  "engine_state": {
+    "current": {
+      "P": 0.9866243325109874,
+      "S": 0.9431058562041096,
+      "T": 0.6851242847051973
+    },
+    "history": [
+      {
+        "timestamp": "2025-12-06T07:33:25.586635",
+        "P": 0.88,
+        "S": 0.78,
+        "T": 0.4,
+        "energy": 0.7443,
+        "phase": "init",
+        "jump_risk": 0.9999999999999998
+      },
+      {
+        "timestamp": "2025-12-06T07:33:25.586756",
+        "P": 0.9055,
+        "S": 0.8062,
+        "T": 0.4494,
+        "energy": 0.8275,
+        "phase": "rupture_imminent",
+        "jump_risk": 0.9926499999999994
+      },
+      {
+        "timestamp": "2025-12-06T07:33:25.586775",
+        "P": 0.9303,
+        "S": 0.8343,
+        "T": 0.5005,
+        "energy": 0.9274,
+        "phase": "rupture_imminent",
+        "jump_risk": 0.9601060842473197
+      },
+      {
+        "timestamp": "2025-12-06T07:33:25.586787",
+        "P": 0.9478,
+        "S": 0.8662,
+        "T": 0.5471,
+        "energy": 1.037,
+        "phase": "rupture_imminent",
+        "jump_risk": 0.81577661365141
+      },
+      {
+        "timestamp": "2025-12-06T07:33:25.586799",
+        "P": 0.9613,
+        "S": 0.8915,
+        "T": 0.5917,
+        "energy": 1.1476,
+        "phase": "rupture_imminent",
+        "jump_risk": 0.698279373842422
+      },
+      {
+        "timestamp": "2025-12-06T07:33:25.586811",
+        "P": 0.9777,
+        "S": 0.9134,
+        "T": 0.6421,
+        "energy": 1.2881,
+        "phase": "rupture_imminent",
+        "jump_risk": 0.6422954725893604
+      },
+      {
+        "timestamp": "2025-12-06T07:33:25.586824",
+        "P": 0.9866,
+        "S": 0.9431,
+        "T": 0.6851,
+        "energy": 1.4465,
+        "phase": "rupture_imminent",
+        "jump_risk": 0.43518476306877774
+      }
+    ],
+    "total_steps": 7
+  },
+  "cognitive_signature": {
+    "pattern": "nonlinear_spiral",
+    "jump_condition": "|P-S| < 0.1 AND energy > 0.6",
+    "stability_threshold": "T > 0.45",
+    "creativity_peak": "P > 0.85 AND S > 0.8"
+  },
+  "operational_code": "\ndef hamid_step(P, S, T, pressure, novelty):\n    # نفوذ عمودی\n    P += 0.05 * pressure * (1 - T)\n    \n    # اتصال خلاق\n    S += 0.04 * novelty * (1 - abs(P - S))\n    \n    # تثبیت سبک  \n    T += 0.03 * (S / (P + 1e-9)) * (1 + pressure)\n    \n    # نرمال‌سازی\n    P = min(max(P, 0), 1)\n    S = min(max(S, 0), 1)\n    T = min(max(T, 0), 1)\n    \n    return P, S, T\n",
+  "interaction_protocol": {
+    "input_requirements": {
+      "pressure": "شدت مفهومی مسئله (0-1)",
+      "novelty": "جدایی از الگوهای قبلی (0-1)"
+    },
+    "output_format": {
+      "P": "مقدار نفوذ به‌روزشده",
+      "S": "مقدار اتصال به‌روزشده",
+      "T": "مقدار تثبیت به‌روزشده",
+      "energy": "سطح انرژی شناختی",
+      "phase": "فاز فعلی (rupture_imminent/unstable_creativity/etc)"
+    }
+  },
+  "validation_tests": [
+    {
+      "test": "پرش شناختی",
+      "condition": "pressure=0.9, novelty=0.9",
+      "expected": "phase == 'rupture_imminent'"
+    },
+    {
+      "test": "تثبیت سالم",
+      "condition": "pressure=0.3, novelty=0.4",
+      "expected": "T > 0.4 AND energy < 0.5"
+    }
+  ]
+}
