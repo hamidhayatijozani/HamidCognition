@@ -1,0 +1,29 @@
+{
+  "analysis": {
+    "action": "BUY",
+    "signal_strength": 0.2896734933114107,
+    "rationale": "Strong BUY signal based on S (0.234) and T (0.000) with P (0.056) reinforcement. Last Close: 1.10002",
+    "P": 0.88,
+    "S": 0.78,
+    "T": 0.4
+  },
+  "trade": {
+    "status": "success",
+    "ticket": 100000,
+    "price": 1.0951082801283225,
+    "action": "BUY",
+    "lots": 0.01,
+    "sl": 1.0946082801283226,
+    "tp": 1.0961082801283224
+  },
+  "account": {
+    "balance": 10000.0,
+    "equity": 10000.0,
+    "profit": 0,
+    "margin": 500.0,
+    "free_margin": 9500.0,
+    "leverage": 500,
+    "positions_count": 0,
+    "daily_trades": 0
+  }
+}
