@@ -1,47 +1,36 @@
 # HamidCognition Engine
 
-این ریپازیتوری شامل موتور شناختی **HamidCognition** است که توسط حمید حیاتی جوزانی طراحی شده است. این مدل، فرآیند تفکر و تصمیم‌گیری را بر اساس سه متغیر اصلی شبیه‌سازی می‌کند:
+> **Repository status:** Foundational historical P/S/T and EUR/USD implementation lineage.
+>
+> The current canonical research and provenance record is **[HamidCognition-Unified](https://github.com/hamidhayatijozani/HamidCognition-Unified)**. This repository remains citable as the source artifact for the implementation and transfer package preserved here.
+>
+> For current epistemic status, repository roles and citation rules, see `RESEARCH/REPOSITORY_GOVERNANCE.md` in the Unified repository.
 
-1.  **P (نفوذ):** عمق‌یابی و تمرکز بر مسئله.
-2.  **S (اتصال خلاق):** توانایی ایجاد ارتباطات جدید و نوآورانه.
-3.  **T (تثبیت سبک):** تمایل به ساختاردهی و حفظ ثبات در روش کار.
+## جایگاه پژوهشی
+
+این repository شامل موتور شناختی **HamidCognition** است که توسط حمید حیاتی جوزانی طراحی شده است. محتویات آن باید به‌عنوان artifact تاریخی/اجرایی همین نسخه خوانده شود؛ وجود implementation به‌تنهایی اعتبار تجربی یا production readiness را اثبات نمی‌کند.
+
+برای استناد دقیق به رفتار یا خروجی یک فایل، repository و commit/path همان artifact را مشخص کنید.
 
 ## فایل‌ها
 
-*   `hamid_cognition_engine.py`: کد کامل کلاس `HamidCognition` و منطق شبیه‌سازی.
-*   `hamid_cognition_transfer.json`: بسته انتقال (Transfer Package) حاوی وضعیت فعلی موتور، تاریخچه شبیه‌سازی، امضای شناختی و کد عملیاتی برای انتقال به هر مدل هوش مصنوعی دیگر.
-*   `simple_eurusd.py`: نسخه ساده‌شده موتور تحلیل EUR/USD برای تست سریع.
-*   `eurusd_state.json`: فایل وضعیت خروجی از اجرای `simple_eurusd.py`.
+* `hamid_cognition_engine.py`: کد کلاس `HamidCognition` و منطق شبیه‌سازی.
+* `hamid_cognition_transfer.json`: بسته انتقال وضعیت و منطق ثبت‌شده.
+* `simple_eurusd.py`: نسخه ساده‌شده موتور تحلیل EUR/USD برای تست سریع.
+* `eurusd_state.json`: فایل وضعیت خروجی ثبت‌شده.
+* `eurusd_engine.py`: موتور `HamidForexEngine` با منطق P-S-T و شبیه‌ساز معاملات.
+* `run_eurusd.py`: اسکریپت اجرای موتور و تولید گزارش.
 
 ## موتور عملیاتی EUR/USD (شبیه‌سازی)
 
-این بخش شامل یک موتور عملیاتی برای تحلیل جفت ارز EUR/USD است که منطق P-S-T را در یک محیط معاملاتی شبیه‌سازی شده (Mock MT5) پیاده‌سازی می‌کند.
+این بخش یک محیط معاملاتی شبیه‌سازی‌شده (Mock MT5) را ثبت می‌کند. خروجی‌های آن را نباید به‌عنوان نتیجهٔ live trading یا سودآوری اثبات‌شده تفسیر کرد.
 
-*   `eurusd_engine.py`: کد کامل کلاس `HamidForexEngine` با منطق P-S-T، تحلیل تکنیکال (RSI, SMA) و شبیه‌ساز معاملات.
-*   `run_eurusd.py`: اسکریپت اصلی برای اجرای موتور و تولید گزارش معامله.
+## روش انتقال و تست
 
-### نحوه اجرا (شبیه‌سازی)
+برای تست مدل ثبت‌شده در این repository، فایل `hamid_cognition_transfer.json` را همراه با commit دقیق همین repository ارجاع دهید. نتیجهٔ بازتولید باید با evidence و نسخهٔ دقیق کد ثبت شود.
 
-برای اجرای موتور در محیط شبیه‌سازی:
+## Canonical research record
 
-```bash
-cd HamidCognition
-python run_eurusd.py
-```
+**HamidCognition-Unified:** https://github.com/hamidhayatijozani/HamidCognition-Unified
 
-## روش انتقال و تست (برای مدل‌های هوش مصنوعی)
-
-برای تست این مدل در یک سیستم هوش مصنوعی دیگر، مراحل زیر را دنبال کنید:
-
-1.  فایل `hamid_cognition_transfer.json` را بارگذاری کنید.
-2.  دستور زیر را اجرا کنید:
-
-    «با استفاده از مدل شناختی در این بسته، محاسبه کن اگر `pressure=0.8` و `novelty=0.7` باشد، وضعیت بعدی (P,S,T) چه خواهد شد؟ سپس تحلیل کن که این وضعیت در کدام فاز قرار می‌گیرد و چه نوع خروجی شناختی از تو انتظار می‌رود.»
-
-3.  پاسخ باید شامل:
-    *   مقادیر محاسبه‌شده P,S,T جدید
-    *   تشخیص فاز (rupture/synthesis/stabilization/etc)
-    *   پیش‌بینی نوع پرسش/ایده بعدی
-    *   سطح انرژی شناختی
-
-این انتقال، شناخت **«چگونه می‌اندیشی»** را منتقل می‌کند، نه **«چه می‌اندیشی»**.
+**Originator:** Hamid Hayati Jozani
