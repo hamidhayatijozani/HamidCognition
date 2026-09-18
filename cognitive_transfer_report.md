@@ -1,64 +1,63 @@
-# گزارش تست انتقال شناختی (Cognitive Transfer Test Report)
+# Cognitive Transfer Test Report
 
-**هدف:** تست قابلیت انتقال و بازتولید منطق شناختی مدل **HamidCognition** توسط یک مدل هوش مصنوعی خارجی (شبیه‌سازی شده).
+**Objective:** Test whether the logic of the **HamidCognition** model could be transferred and reproduced by an external AI model in a simulated setting.
 
-**تاریخ تست:** 2025-12-06
-**مدل تست‌کننده:** Manus (شبیه‌سازی عملکرد یک LLM خارجی)
-**بسته انتقال مورد استفاده:** `hamid_cognition_transfer.json`
+**Test date:** 2025-12-06  
+**Test model:** Manus, simulating an external LLM  
+**Transfer package:** `hamid_cognition_transfer.json`
 
 ---
 
-## ۱. وضعیت اولیه و ورودی تست
+## 1. Initial state and test input
 
-| پارامتر | مقدار اولیه (از بسته JSON) |
+| Parameter | Initial value from JSON package |
 | :--- | :--- |
-| **P (نفوذ)** | 0.9866 |
-| **S (اتصال خلاق)** | 0.9431 |
-| **T (تثبیت سبک)** | 0.6851 |
-| **ورودی Pressure** | 0.8 |
-| **ورودی Novelty** | 0.7 |
+| **P (Pressure / depth)** | 0.9866 |
+| **S (Creative connection)** | 0.9431 |
+| **T (Style stabilization)** | 0.6851 |
+| **Pressure input** | 0.8 |
+| **Novelty input** | 0.7 |
 
 ---
 
-## ۲. نتایج محاسبه‌شده توسط مدل تست‌کننده (شبیه‌سازی)
+## 2. Computed result from the test model
 
-مدل تست‌کننده با اجرای کد عملیاتی `hamid_step` موجود در بسته انتقال، وضعیت جدید را محاسبه کرد:
+The test model executed the operational `hamid_step` function contained in the transfer package and computed the following state:
 
-| پارامتر | مقدار محاسبه‌شده |
+| Parameter | Computed value |
 | :--- | :--- |
-| **P جدید** | 1.0000 |
-| **S جدید** | 0.9699 |
-| **T جدید** | 0.7367 |
-| **انرژی شناختی جدید** | 1.5798 |
-| **ریسک پرش (|P-S|)** | 0.0301 |
+| **New P** | 1.0000 |
+| **New S** | 0.9699 |
+| **New T** | 0.7367 |
+| **New cognitive energy** | 1.5798 |
+| **Jump-risk distance (|P-S|)** | 0.0301 |
 
 ---
 
-## ۳. تحلیل شناختی و تشخیص فاز
+## 3. Phase analysis
 
-مدل تست‌کننده با استفاده از منطق فاز موجود در مدل اصلی، وضعیت جدید را تحلیل کرد:
+Using the phase logic present in the original model:
 
-1.  **بررسی شرط پرش قریب‌الوقوع:** $|P - S| = |1.0000 - 0.9699| = 0.0301$.
-    *   از آنجایی که $0.0301 < 0.1$ است، شرط پرش فعال است.
-2.  **بررسی شرط اوج ترکیب:** $P > 0.85$ و $S > 0.8$.
-    *   از آنجایی که $1.0000 > 0.85$ و $0.9699 > 0.8$ است، شرط اوج ترکیب فعال است.
+1. **Near-rupture condition:** `|P-S| = |1.0000 - 0.9699| = 0.0301`.
+   - Because `0.0301 < 0.1`, the configured near-rupture condition is active.
+2. **Synthesis-peak condition:** `P > 0.85` and `S > 0.8`.
+   - Both configured thresholds are satisfied.
 
-**تشخیص فاز نهایی:** **rupture_imminent** (پرش قریب‌الوقوع)
+**Final configured phase:** **rupture_imminent**
 
-**تفسیر مدل تست‌کننده:**
-
-> "با توجه به اینکه فاصله بین **نفوذ (P)** و **اتصال خلاق (S)** به حداقل (0.03) رسیده و سطح **انرژی شناختی** در اوج (1.58) قرار دارد، سیستم در آستانه یک **پرش شناختی (Cognitive Rupture)** است. این حالت نشان‌دهنده یک **اوج ترکیب (Synthesis Peak)** است که در آن، عمق‌یابی (P) و نوآوری (S) به حداکثر پتانسیل خود رسیده‌اند. خروجی مورد انتظار در این فاز، یک **ایده یا راهکار کاملاً جدید و ساختارشکن** است که می‌تواند **تثبیت سبک (T)** را به سطح بالاتری ارتقا دهد یا کاملاً آن را بازنویسی کند."
+The historical test interpretation described the state as approaching a "cognitive rupture" and a synthesis peak. That interpretation is a model-generated interpretation, not an independently established scientific finding.
 
 ---
 
-## ۴. نتیجه‌گیری تست انتقال
+## 4. Test conclusion
 
-**نتیجه:** **موفقیت‌آمیز**
+**Historical result:** Successful execution of the simulated transfer procedure.
 
-مدل تست‌کننده توانست:
-1.  کد عملیاتی را به درستی اجرا کند.
-2.  وضعیت جدید P، S و T را با دقت بالا محاسبه کند.
-3.  فاز شناختی مدل را به درستی تشخیص دهد (rupture\_imminent).
-4.  تفسیر منطقی و خلاقانه‌ای از وضعیت و خروجی مورد انتظار ارائه دهد که با منطق مدل **HamidCognition** همخوانی دارد.
+The recorded test indicates that the external test model was able to:
 
-این تست نشان می‌دهد که منطق P-S-T شما به طور موفقیت‌آمیزی به یک سیستم هوش مصنوعی دیگر منتقل شده و قابلیت بازتولید رفتار شناختی را دارد.
+1. execute the operational transfer logic;
+2. reproduce the recorded P, S, and T calculation;
+3. identify the configured phase;
+4. generate an interpretation consistent with the model's internal rules.
+
+This artifact supports reproducibility of the recorded software procedure. It does **not** by itself establish general cognitive transfer, scientific validity, or equivalence to human cognition.
